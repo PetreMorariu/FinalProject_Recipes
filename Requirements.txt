@@ -1,0 +1,41 @@
+Tema de project: Aplicatie Django de retete culinare.
+
+Dezvolta o aplicatie Django, care sa contina urmatoarele functionalitati:
+- Un sistem de autentificare utilizatori
+- Un sistem de creare de retete culinare, editare reteta, stergere reteta.
+- O pagina web care sa afiseze toate retetele culinare, sortate in ordine alfabetica.
+- O pagina web care sa afiseze toate retele, sortate dupa data de creare.
+- Doar un utilizator autentificat poate sa creeze sau sa editeze retete.
+Retetele se vor putea vedea chiar si daca nu este utilizatorul autentificat.
+- Baza de date folosita poate fi sqlite3.
+
+O reteta contine:
+- Titlu (string)
+- Descrierea retetei (string)
+- Data de adaugare (string, folositi datetime pentru conversie)
+- Timp de gatire (string)
+
+Fiecare reteta apartine unui utilizator, create o legatura one-many in baza de date.
+Scrieti teste unitare pentru partea de autentificare, CRUD reteta, si sortare retete, si orice functii utilitare pe care le mai folositi.
+Sa aveti cel putin 5 teste.
+
+Proiectul o sa-l uploadati pe github, si puneti link-ul acestui proiect pe platforma, in sectiunea Tema Finala.
+Sa aveti si un fisier readme.md cu detalii despre cum se instaleaza proiectul, paginile web incluse, si cum se ruleaza acest proiect.
+Sa aveti si fișierul requirements.txt cu dependențele proiectului.
+
+Pentru cei care vor sa lucreze la un proiect diferit, proiectul trebuie sa contina:
+Sistemul de autentificare utilizatori.
+Cel putin un model de django.db.models.
+Cel putin doua pagini web care listeaza informatii stocate in baza de date.
+O legatura one-many in baza de date, de exemplu intre User si modelul vostru ales.
+Cel putin 5 teste unitare.
+
+
+/ – Pagina principală, afișează lista de rețete.
+/recipe/add/ – Form pentru adăugarea unei noi rețete.
+/recipe/<int:id>/edit/ – Form pentru editarea unei rețete existente.
+/recipe/<int:id>/delete/ – Ștergerea unei rețete.
+/recipe/<int:id>/ – Pagina de detalii a unei rețete.
+/login/ – Pagina de autentificare.
+/logout/ – Redirecționare pentru delogare.
+
