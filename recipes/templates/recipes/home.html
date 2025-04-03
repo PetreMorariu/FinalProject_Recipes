@@ -8,8 +8,8 @@
               <small class="text-muted">{{ recipe.date_created|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="#">{{ recipe.title }}</a></h2>
+            <p class="article-content">Cook Time:{{ recipe.cook_time }}</p>
             <p class="article-content">{{ recipe.content }}</p>
-            <p class="article-content">{{ recipe.cook_time }}</p>
           </div>
         </article>
     {% endfor %}
