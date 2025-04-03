@@ -7,14 +7,16 @@ Dezvolta o aplicatie Django, care sa contina urmatoarele functionalitati:
 - O pagina web care sa afiseze toate retele, sortate dupa data de creare.
 - Doar un utilizator autentificat poate sa creeze sau sa editeze retete.
 Retetele se vor putea vedea chiar si daca nu este utilizatorul autentificat.
-- Baza de date folosita poate fi sqlite3.
+- Baza de date folosita poate fi sqlite3.#Using a sqlite3 database
 
+#Created the model
 O reteta contine:
 - Titlu (string)
 - Descrierea retetei (string)
 - Data de adaugare (string, folositi datetime pentru conversie)
 - Timp de gatire (string)
 
+#Created the one-many relations in the database
 Fiecare reteta apartine unui utilizator, create o legatura one-many in baza de date.
 Scrieti teste unitare pentru partea de autentificare, CRUD reteta, si sortare retete, si orice functii utilitare pe care le mai folositi.
 Sa aveti cel putin 5 teste.

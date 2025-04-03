@@ -35,7 +35,7 @@
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         <a class="nav-item nav-link" href="#">Login</a>
-                        <a class="nav-item nav-link" href="#">Register</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
                     </div>
                 </div>
             </div>
@@ -57,15 +57,11 @@
             </div>
             <div class="col-md-4">
                 <div class="content-section">
-                    <h3>Our Sidebar</h3>
-                    <p class='text-muted'>You can put any information here you'd like.
-                    <ul class="list-group">
-                        <li class="list-group-item list-group-item-light">Latest Posts</li>
-                        <li class="list-group-item list-group-item-light">Announcements</li>
-                        <li class="list-group-item list-group-item-light">Calendars</li>
-                        <li class="list-group-item list-group-item-light">etc</li>
-                    </ul>
-                    </p>
+                    <h3>Sorting Options</h3>
+                        <ul class="list-group">
+                            <a class="nav-item nav-link" href="#">Sorted Ascending by recipe name</a>
+                            <a class="nav-item nav-link" href="#">Sorted Ascending by date</a>
+                       </ul>
                 </div>
             </div>
         </div>
