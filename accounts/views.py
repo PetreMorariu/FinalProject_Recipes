@@ -2,6 +2,7 @@ from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import UserRegisterForm
@@ -38,3 +39,7 @@ def logout_view(request):
       if request.method == 'POST':
         logout(request)
         return render(request, 'accounts/logout.html')
+
+@login_required
+def profile(request):
+    return render(request, 'accounts/profile.html')
