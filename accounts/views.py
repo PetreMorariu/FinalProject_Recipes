@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm
 
 def register(request):
     if request.method == "POST":
@@ -42,4 +42,16 @@ def logout_view(request):
 
 @login_required
 def profile(request):
-    return render(request, 'accounts/profile.html')
+    if request.method == 'POST':
+         u_form = UserUpdateForm(request.POST, instance=request.user)
+         if u_form.is_valid():
+             u_form.save()
+         messages.error(request,f'Your Account has been updated!')
+         return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+
+    context = {
+        'u_form':u_form
+    }
+    return render(request, 'accounts/profile.html',context)
