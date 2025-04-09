@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe
 from .forms import RecipeForm
 from django.contrib import messages
@@ -44,3 +44,20 @@ def add_recipe(request):
 
 def about(request):
     return  render(request, 'recipes/about.html', {'title':'About'})
+
+
+@login_required
+def edit_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
+
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, instance=recipe)  # Populate form with the existing recipe
+        if form.is_valid():
+            form.save()  # Update the recipe instance in the database
+            messages.success(request, f'Your recipe has been updated!')
+            return redirect('recipes-home')
+    else:
+        form = RecipeForm(instance=recipe)  # Pre-fill the form with recipe data
+
+    return render(request, 'recipes/edit_recipe.html', {'form': form, 'recipe': recipe})
+
