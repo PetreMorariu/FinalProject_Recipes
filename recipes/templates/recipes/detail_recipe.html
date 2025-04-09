@@ -5,6 +5,7 @@
       <fieldset class="form-group">
         <legend class="border-bottom mb-4">Detail View</legend>
            {{ form | crispy }}
+         <p>Cook time* and Prep time* are displayed in minutes</p>
          <p>Created by: {{ object.author }}</p>
       </fieldset>
       {% if object.author == user %}
