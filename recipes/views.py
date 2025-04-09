@@ -28,6 +28,21 @@ def format_total_cook_time(duration):
                                                                             minute_descriptor=minute_descriptor,
                                                                             hour_descriptor=hour_descriptor)
 
+def about(request):
+    return  render(request, 'recipes/about.html', {'title':'About'})
+
+@login_required
+def detail_view_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
+    form = RecipeForm(instance=recipe)
+
+    # Disable all the fields in the form
+    for field in form:
+        field.field.widget.attrs['disabled'] = 'disabled'
+
+    return render(request, 'recipes/detail_recipe.html', {'form': form, 'object': recipe})
+
+
 @login_required
 def add_recipe(request):
     if request.method == 'POST':
@@ -42,8 +57,6 @@ def add_recipe(request):
         form = RecipeForm()
         return render(request, 'recipes/add_recipe.html', {'form':form})
 
-def about(request):
-    return  render(request, 'recipes/about.html', {'title':'About'})
 
 
 @login_required

@@ -1,0 +1,16 @@
+{% extends "recipes/base.html" %}
+{% load crispy_forms_tags %} <!-- will allow us to use the cripsy filter on any forms -->
+{% block content %}
+    <div class="content-section">
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Detail View</legend>
+          {{ form | crispy }}
+      </fieldset>
+      {% if object.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'edit-recipes' object.id %}">Edit</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
+          </div>
+      {% endif %}
+    </div>
+{% endblock content %}
