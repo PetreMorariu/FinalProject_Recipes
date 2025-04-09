@@ -39,6 +39,7 @@
                     <!-- Navbar Right Side -->
                     <div class="navbar-nav">
                         {% if user.is_authenticated %}
+                             <a class="nav-item nav-link" >Logged as: {{user}}</a>
                              <!-- Logout Button -->
                             <form method="POST" action="{% url 'logout' %}" class="form-inline my-2 my-lg-0">
                                 {% csrf_token %}
