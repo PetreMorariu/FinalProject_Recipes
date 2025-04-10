@@ -75,6 +75,7 @@ def edit_recipe(request, recipe_id):
 
     return render(request, 'recipes/edit_recipe.html', {'form': form, 'recipe': recipe})
 
+@login_required
 def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
     if request.method == 'POST':

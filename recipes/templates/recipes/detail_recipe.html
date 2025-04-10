@@ -3,7 +3,7 @@
 {% block content %}
     <div class="content-section">
       <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Detail View</legend>
+        <legend class="border-bottom mb-4">Detail View for {{object.title}}</legend>
            {{ form | crispy }}
          <p>Prep time* and Cook time* are displayed in minutes</p>
          <p>Created by: {{ object.author }}</p>
