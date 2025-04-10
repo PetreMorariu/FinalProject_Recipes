@@ -4,6 +4,7 @@ from .forms import RecipeForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 def home(request):
     recipes = Recipe.objects.all()
 
@@ -73,4 +74,15 @@ def edit_recipe(request, recipe_id):
         form = RecipeForm(instance=recipe)  # Pre-fill the form with recipe data
 
     return render(request, 'recipes/edit_recipe.html', {'form': form, 'recipe': recipe})
+
+def delete_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
+    if request.method == 'POST':
+        recipe.delete()
+        return redirect("recipes-home")
+    return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
+
+def confirm_delete(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
+    return render(request, 'confirm_delete.html', {'recipe':recipe})
 

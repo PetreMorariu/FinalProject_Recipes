@@ -5,13 +5,13 @@
       <fieldset class="form-group">
         <legend class="border-bottom mb-4">Detail View</legend>
            {{ form | crispy }}
-         <p>Cook time* and Prep time* are displayed in minutes</p>
+         <p>Prep time* and Cook time* are displayed in minutes</p>
          <p>Created by: {{ object.author }}</p>
       </fieldset>
       {% if object.author == user %}
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'edit-recipes' object.id %}">Edit</a>
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="#">Delete</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete-recipes' object.id %}">Delete</a>
           </div>
       {% endif %}
     </div>
