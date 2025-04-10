@@ -82,7 +82,4 @@ def delete_recipe(request, recipe_id):
         return redirect("recipes-home")
     return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
 
-def confirm_delete(request, recipe_id):
-    recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
-    return render(request, 'confirm_delete.html', {'recipe':recipe})
 
