@@ -29,10 +29,6 @@ def format_total_cook_time(duration):
                                                                             minute_descriptor=minute_descriptor,
                                                                             hour_descriptor=hour_descriptor)
 
-def about(request):
-    return  render(request, 'recipes/about.html', {'title':'About'})
-
-
 def detail_view_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
     form = RecipeForm(instance=recipe)
