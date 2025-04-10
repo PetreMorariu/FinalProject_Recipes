@@ -1,0 +1,16 @@
+{% extends "recipes/base.html" %}
+{% block content%}
+        {% for recipe in recipes %}
+            <article class="media content-section">
+              <div class="media-body">
+                <h2><a class="article-title" href="{% url 'detail-recipes' recipe.id %}">{{ recipe.title }}</a></h2>
+                <p class="article-content">Total Cook Time:{{ recipe.total_time }}</p>
+                <div class="article-metadata">
+                  <a class="mr-2" >{{ recipe.author }}</a>
+                  <small class="text-muted">{{ recipe.date_created|date:"F d, Y" }}</small>
+                </div>
+               <!--<p class="article-content">{{ recipe.content }}</p>-->
+              </div>
+            </article>
+        {% endfor %}
+{% endblock content %}

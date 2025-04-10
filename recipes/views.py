@@ -35,7 +35,7 @@ def detail_view_recipe(request, recipe_id):
 
     # Disable all the fields in the form
     for field in form:
-        field.field.widget.attrs['disabled'] = 'disabled'
+        field.field.widget.attrs['disabled'] = 'disabled'# the form fields are disabled(read-only)
 
     return render(request, 'recipes/detail_recipe.html', {'form': form, 'object': recipe})
 
@@ -78,5 +78,18 @@ def delete_recipe(request, recipe_id):
         recipe.delete()
         return redirect("recipes-home")
     return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
+
+
+
+def sort_recipe_by_title(request):
+    recipes = Recipe.objects.all()
+    recipes_list = []
+    for recipe in recipes:
+        recipes_list.append(recipe)
+    recipes_list.sort(key=lambda recipe: recipe.title)
+    return render(request, 'recipes/sort_title.html', {'recipes': recipes_list})
+
+
+
 
 
