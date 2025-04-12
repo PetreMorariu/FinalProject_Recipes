@@ -92,7 +92,13 @@ def sort_recipe_by_title(request):
     for recipe in recipes:
         recipes_list.append(recipe)
     recipes_list.sort(key=lambda recipe: recipe.title)
-    return render(request, 'recipes/sort_title.html', {'recipes': recipes_list})
+
+    # Pagination
+    paginator = Paginator(recipes_list, 5)
+    page_number = request.GET.get('page')
+    recipes_page = paginator.get_page(page_number)
+
+    return render(request, 'recipes/sort_title.html', {'recipes': recipes_page})
 
 
 
