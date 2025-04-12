@@ -3,6 +3,7 @@ from .models import Recipe
 from .forms import RecipeForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 def home(request):
@@ -12,9 +13,13 @@ def home(request):
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time  # Attach to each recipe instance
 
+    paginator = Paginator(recipes,5)
+    page_number = request.GET.get('page')  # Get the page number from GET request
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'recipes': recipes
-    }
+        'recipes': page_obj
+        }
 
     return render(request, 'recipes/home.html',context)
 
@@ -90,7 +95,7 @@ def sort_recipe_by_title(request):
     return render(request, 'recipes/sort_title.html', {'recipes': recipes_list})
 
 
-#not working properly, work in progress
+
 def view_recipes_user(request):
     author = request.GET.get('author')
     if author:
@@ -102,8 +107,7 @@ def view_recipes_user(request):
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time  # Attach to each recipe instance
     context = {
-        'recipes': recipes,
-        'requested_author': author
+        'recipes': recipes
     }
 
     return render(request, 'recipes/one_user_recipes.html', context)

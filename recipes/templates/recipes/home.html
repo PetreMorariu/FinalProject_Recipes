@@ -13,4 +13,21 @@
           </div>
         </article>
     {% endfor %}
+    <!-- Page navigation -->
+    <div class="pagination">
+        <span class="article-metadata">
+            {% if recipes.has_previous %}
+                <a class="btn btn-outline-info" href="?page=1">&laquo; first</a>
+                <a class="btn btn-outline-info" href="?page={{ recipes.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="article-title">
+                {{ recipes.number }} of {{ recipes.paginator.num_pages }}
+            </span>
+
+            {% if recipes.has_next %}
+                <a class="btn btn-outline-info" href="?page={{ recipes.next_page_number }}">next</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock content %}
