@@ -90,6 +90,26 @@ def sort_recipe_by_title(request):
     return render(request, 'recipes/sort_title.html', {'recipes': recipes_list})
 
 
+#not working properly, work in progress
+def view_recipes_user(request):
+    author = request.GET.get('author')
+    if author:
+        recipes = Recipe.objects.filter(author__username=author)
+    else:
+        recipes = Recipe.objects.all()
+
+    for recipe in recipes:
+        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
+        recipe.total_time = total_time  # Attach to each recipe instance
+    context = {
+        'recipes': recipes,
+        'requested_author': author
+    }
+
+    return render(request, 'recipes/one_user_recipes.html', context)
+
+
+
 
 
 
