@@ -101,6 +101,20 @@ def sort_recipe_by_title(request):
     return render(request, 'recipes/sort_title.html', {'recipes': recipes_page})
 
 
+def sort_recipe_by_date(request):
+    recipes = Recipe.objects.all()
+    recipes_list = []
+    for recipe in recipes:
+        recipes_list.append(recipe)
+    recipes_list.sort(key=lambda recipe: recipe.date_created)
+
+    # Pagination
+    paginator = Paginator(recipes_list, 5)
+    page_number = request.GET.get('page')
+    recipes_page = paginator.get_page(page_number)
+
+    return render(request, 'recipes/sort_date_created.html', {'recipes': recipes_page})
+
 
 def view_recipes_user(request):
     author = request.GET.get('author')
