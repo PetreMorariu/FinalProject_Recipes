@@ -1,0 +1,31 @@
+{% extends "recipes/base.html" %}
+{% block content %}
+
+        <article class="media content-section">
+          <div class="media-body">
+            <fieldset class="form-group">
+                <h2><a class="article-title" >{{ recipe.title }}</a></h2>
+              <a class="mr-2" style="font-weight: bold">INGREDIENTS:</a>
+              <p class="article-content">{{ recipe.ingredients }}</p>
+              <a class="mr-2" style="font-weight: bold" >COOKING STEPS:</a>
+              <p class="article-content">{{ recipe.cooking_steps }}</p>
+              <a class="mr-2" style="font-weight: bold" >PREPARATION TIME:</a>
+              <p class="article-content">{{ recipe.prep_time }} min</p>
+              <a class="mr-2" style="font-weight: bold" >COOKING TIME:</a>
+              <p class="article-content">{{ recipe.cook_time }} min</p>
+              <div class="article-metadata">
+                <a class="mr-2" href="{% url 'user-recipes' %}?author={{ recipe.author|urlencode }}" >{{ recipe.author }}</a>
+                <small class="text-muted">{{ recipe.date_created|date:"F d, Y" }}</small>
+              </div>
+            </fieldset>
+
+           {% if recipe.author == user %}
+              <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'edit-recipes' recipe.id %}">Edit</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete-recipes' recipe.id %}">Delete</a>
+              </div>
+           {% endif %}
+          </div>
+        </article>
+
+{% endblock content %}

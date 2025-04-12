@@ -13,7 +13,7 @@ def home(request):
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time  # Attach to each recipe instance
 
-    paginator = Paginator(recipes,5)
+    paginator = Paginator(recipes,7)
     page_number = request.GET.get('page')  # Get the page number from GET request
     page_obj = paginator.get_page(page_number)
 
@@ -34,15 +34,10 @@ def format_total_cook_time(duration):
                                                                             minute_descriptor=minute_descriptor,
                                                                             hour_descriptor=hour_descriptor)
 
-def detail_view_recipe(request, recipe_id):
+def detail_view_recipe_v2(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
-    form = RecipeForm(instance=recipe)
-
-    # Disable all the fields in the form
-    for field in form:
-        field.field.widget.attrs['disabled'] = 'disabled'# the form fields are disabled(read-only)
-
-    return render(request, 'recipes/detail_recipe.html', {'form': form, 'object': recipe})
+    # form = RecipeForm(instance=recipe)
+    return render(request, 'recipes/detail_recipe_v2.html', {'recipe': recipe})
 
 
 @login_required
@@ -94,7 +89,7 @@ def sort_recipe_by_title(request):
     recipes_list.sort(key=lambda recipe: recipe.title)
 
     # Pagination
-    paginator = Paginator(recipes_list, 5)
+    paginator = Paginator(recipes_list, 7)
     page_number = request.GET.get('page')
     recipes_page = paginator.get_page(page_number)
 
@@ -106,7 +101,7 @@ def sort_recipe_by_date(request):
     recipes_list = []
     for recipe in recipes:
         recipes_list.append(recipe)
-    recipes_list.sort(key=lambda recipe: recipe.date_created)
+    recipes_list.sort(key=lambda recipe: recipe.date_created, reverse=True)
 
     # Pagination
     paginator = Paginator(recipes_list, 5)
