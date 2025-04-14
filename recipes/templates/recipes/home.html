@@ -4,7 +4,7 @@
         <article class="media content-section">
           <div class="media-body">
             <h2><a class="article-title" href="{% url 'detail-recipes' recipe.id %}">{{ recipe.title }}</a></h2>
-            <p class="article-content">Total Cook Time:{{ recipe.total_time }}</p>
+            <p class="article-content" style="font-weight: bold">Total Cook Time:  {{ recipe.total_time }}</p>
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-recipes' %}?author={{ recipe.author|urlencode }}" >{{ recipe.author }}</a>
               <small class="text-muted">{{ recipe.date_created|date:"F d, Y" }}</small>
