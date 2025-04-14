@@ -43,7 +43,7 @@ def detail_view_recipe_v2(request, recipe_id):
 @login_required
 def add_recipe(request):
     if request.method == 'POST':
-        form = RecipeForm(request.POST)
+        form = RecipeForm(request.POST,request.FILES) #request.FILES will make sure to get the image as well
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
@@ -61,7 +61,7 @@ def edit_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
 
     if request.method == 'POST':
-        form = RecipeForm(request.POST, instance=recipe)  # Populate form with the existing recipe
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)  # Populate form with the existing recipe
         if form.is_valid():
             form.save()  # Update the recipe instance in the database
             messages.success(request, f'Your recipe has been updated!')
