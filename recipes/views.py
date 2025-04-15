@@ -50,6 +50,9 @@ def add_recipe(request):
             recipe.save()
             messages.success(request, f'Your recipe has been created!')
             return redirect('recipes-home')
+        else:
+            messages.error(request, f"Please correct the errors")
+            return render(request, 'recipes/add_recipe.html', {'form': form})
     else:
         form = RecipeForm()
         return render(request, 'recipes/add_recipe.html', {'form':form})
