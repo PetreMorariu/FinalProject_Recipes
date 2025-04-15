@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 
 def home(request):
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.all().order_by('title')
 
     for recipe in recipes:
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
@@ -86,7 +86,7 @@ def sort_recipe_by_title(request):
     recipes_list = []
     for recipe in recipes:
         recipes_list.append(recipe)
-    recipes_list.sort(key=lambda recipe: recipe.title)
+    recipes_list.sort(key=lambda recipe: recipe.title, reverse=True)
 
     # Pagination
     paginator = Paginator(recipes_list, 7)

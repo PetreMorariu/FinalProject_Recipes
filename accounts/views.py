@@ -46,7 +46,9 @@ def profile(request):
          u_form = UserUpdateForm(request.POST, instance=request.user)
          if u_form.is_valid():
              u_form.save()
-         messages.error(request,f'Your Account has been updated!')
+             messages.info(request,f'Your Account has been updated!')
+         else:
+             messages.warning(request, f'The account already exists!')
          return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
