@@ -78,3 +78,15 @@ def test_add_recipe(client_logged_in, user, recipe, recipes):
     response = client_logged_in.post(url,recipe_dict)
     assert response.status_code == 200
     assert "New Recipe" in response.content.decode()
+
+def test_confirm_delete(client_logged_in,user,recipe):
+    url = "/recipe/1/delete/"
+    response = client_logged_in.get(url)
+    decoded = response.content.decode()
+    assert response.status_code == 200
+    assert "Delete Recipe" in decoded
+
+    assert len(Recipe.objects.all()) == 1
+    # response = client_logged_in.post("/books/1/delete/")
+    # assert response.status_code == 302
+    # assert len(Recipe.objects.all()) == 0
