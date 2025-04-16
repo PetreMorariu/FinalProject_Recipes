@@ -87,6 +87,9 @@ def test_confirm_delete(client_logged_in,user,recipe):
     assert "Delete Recipe" in decoded
 
     assert len(Recipe.objects.all()) == 1
-    # response = client_logged_in.post("/books/1/delete/")
-    # assert response.status_code == 302
-    # assert len(Recipe.objects.all()) == 0
+
+    response = client_logged_in.post("/recipe/1/delete/")
+    assert response.status_code == 302
+    assert len(Recipe.objects.all()) == 0
+
+

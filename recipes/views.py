@@ -36,7 +36,6 @@ def format_total_cook_time(duration):
 
 def detail_view_recipe_v2(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
-    # form = RecipeForm(instance=recipe)
     return render(request, 'recipes/detail_recipe_v2.html', {'recipe': recipe})
 
 
@@ -68,7 +67,7 @@ def edit_recipe(request, recipe_id):
         if form.is_valid():
             form.save()  # Update the recipe instance in the database
             messages.success(request, f'Your recipe has been updated!')
-            return redirect('recipes-home')
+            return redirect('detail-recipes', recipe_id=recipe.id)
     else:
         form = RecipeForm(instance=recipe)  # Pre-fill the form with recipe data
 

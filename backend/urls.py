@@ -23,8 +23,6 @@ from accounts import views as accounts_views #imported the views under the name 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', accounts_views.register, name='register'),
-    path('profile/', accounts_views.profile, name='profile'),
     path('', include('recipes.urls')),
     path('', include('accounts.urls')),
 ]

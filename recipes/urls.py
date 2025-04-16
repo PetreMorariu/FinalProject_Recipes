@@ -10,4 +10,5 @@ urlpatterns = [
     path('recipes/sort_title/', views.sort_recipe_by_title, name='sort-title'),
     path('recipes/sort_date/', views.sort_recipe_by_date, name='sort-date'),
     path('recipes/user/', views.view_recipes_user, name='user-recipes'),
+
 ]
