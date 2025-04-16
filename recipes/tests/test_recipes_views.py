@@ -57,6 +57,20 @@ def test_home(client_logged_in, user, recipe):
     assert response.status_code == 200
     assert recipe.title in decoded
 
+def test_detail_view(client_logged_in,user,recipes):
+    url = "/recipe/1/"
+    response = client_logged_in.get(url)
+    decoded = response.content.decode()
+    assert response.status_code == 200
+    assert "INGREDIENTS:" in decoded
+
+    url = "/recipe/2/"
+    response = client_logged_in.get(url)
+    decoded = response.content.decode()
+    assert response.status_code == 200
+    assert "INGREDIENTS:" in decoded
+
+
 def test_add_recipe(client_logged_in, user, recipe, recipes):
     url= "/recipe/add/"
     response = client_logged_in.get(url)
@@ -78,6 +92,14 @@ def test_add_recipe(client_logged_in, user, recipe, recipes):
     response = client_logged_in.post(url,recipe_dict)
     assert response.status_code == 200
     assert "New Recipe" in response.content.decode()
+
+def test_edit_recipe(client_logged_in, user, recipe):
+    url = "/recipe/1/edit/"
+    response = client_logged_in.get(url)
+    decoded = response.content.decode()
+    assert response.status_code == 200
+    assert "Prep time* and Cook time* are displayed in minutes" in decoded
+
 
 def test_confirm_delete(client_logged_in,user,recipe):
     url = "/recipe/1/delete/"
