@@ -114,7 +114,7 @@ def sort_recipe_by_date(request):
     recipes_list = []
     for recipe in recipes:
         recipes_list.append(recipe)
-    recipes_list.sort(key=lambda recipe: recipe.date_created, reverse=True)
+    recipes_list.sort(key=lambda recipe: recipe.date_created)
 
     # Pagination
     paginator = Paginator(recipes_list, 7)
