@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 
 def home(request):
-    recipes = Recipe.objects.all().order_by('title')
+    recipes = Recipe.objects.all().order_by('-date_created')
 
     for recipe in recipes:
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
@@ -86,10 +86,15 @@ def delete_recipe(request, recipe_id):
 
 def sort_recipe_by_title(request):
     recipes = Recipe.objects.all()
+    #add the total_time to each recipe
+    for recipe in recipes:
+        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
+        recipe.total_time = total_time  # Attach to each recipe instance
+
     recipes_list = []
     for recipe in recipes:
         recipes_list.append(recipe)
-    recipes_list.sort(key=lambda recipe: recipe.title, reverse=True)
+    recipes_list.sort(key=lambda recipe: recipe.title)
 
     # Pagination
     paginator = Paginator(recipes_list, 7)
@@ -101,6 +106,11 @@ def sort_recipe_by_title(request):
 
 def sort_recipe_by_date(request):
     recipes = Recipe.objects.all()
+    # add the total_time to each recipe
+    for recipe in recipes:
+        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
+        recipe.total_time = total_time  # Attach to each recipe instance
+
     recipes_list = []
     for recipe in recipes:
         recipes_list.append(recipe)
