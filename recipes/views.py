@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe
-from .forms import RecipeForm
+from .forms import RecipeForm, SearchForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -139,6 +139,18 @@ def view_recipes_user(request):
     }
 
     return render(request, 'recipes/one_user_recipes.html', context)
+
+def search(request):
+    form = SearchForm()
+    results = []
+
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Recipe.objects.filter(title__icontains=query)  # Search in the title
+
+    return render(request, 'recipes/search.html', {'form': form, 'results': results})
 
 
 
