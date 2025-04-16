@@ -150,6 +150,10 @@ def search(request):
             query = form.cleaned_data['query']
             results = Recipe.objects.filter(title__icontains=query)  # Search in the title
 
+    for recipe in results:
+        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
+        recipe.total_time = total_time  # Attach to each recipe instance
+
     return render(request, 'recipes/search.html', {'form': form, 'results': results})
 
 
