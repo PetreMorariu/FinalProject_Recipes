@@ -78,6 +78,7 @@ def delete_recipe(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id, author=request.user)
     if request.method == 'POST':
         recipe.delete()
+        messages.warning(request, f'Your recipe was deleted!')
         return redirect("recipes-home")
     return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
 
