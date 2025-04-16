@@ -57,6 +57,11 @@ def test_home(client_logged_in, user, recipe):
     assert response.status_code == 200
     assert recipe.title in decoded
 
+def test_format_total_cook_time(client_logged_in, user, recipe):
+    recipe = recipe
+    assert recipe.prep_time == 45
+    assert recipe.cook_time == 34
+
 def test_detail_view(client_logged_in,user,recipes):
     url = "/recipe/1/"
     response = client_logged_in.get(url)
