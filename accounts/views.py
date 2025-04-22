@@ -1,4 +1,4 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -46,16 +46,23 @@ def view_profile(request):
     form = Profile
     return render(request, 'accounts/view_profile.html',{'form':form})
 
+
+
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-         u_form = UserUpdateForm(request.POST, instance=request.user)
-         if u_form.is_valid():
-             u_form.save()
-             messages.info(request,f'Your Account has been updated!')
-         else:
-             messages.warning(request, f'The account already exists!')
-         return redirect('view_profile')
+        password = request.POST.get('password')
+        user = authenticate(username=request.user, password=password)
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        if user is not None:
+            if u_form.is_valid():
+                u_form.save()
+                messages.success(request, 'Your Account has been updated!')
+                return redirect('view_profile')
+            else:
+                messages.warning(request, 'The username already exists!')
+        else:
+            messages.warning(request, 'The password is incorrect.')
     else:
         u_form = UserUpdateForm(instance=request.user)
-    return render(request, 'accounts/edit_profile.html',{'u_form':u_form})
+    return render(request, 'accounts/edit_profile.html', {'u_form': u_form})
