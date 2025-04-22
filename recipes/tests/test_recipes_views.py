@@ -52,7 +52,8 @@ def test_home(client_logged_in, user, recipe):
     assert user is not None
 
     #testing "get" for one recipe
-    response_single_get = client_logged_in.get("/1/")
+
+    client_logged_in.get("/1/")
     decoded = response.content.decode()
     assert response.status_code == 200
     assert recipe.title in decoded
