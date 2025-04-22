@@ -9,7 +9,7 @@
           <a class="mr-2" style="font-weight: bold">E-mail:</a>
           <p class="text-secondary">{{ user.email }}</p>
       </div>
-      <button class="btn btn-outline-info" type="submit">Edit Profile</button>
+      <a class="btn btn-outline-info" href="{% url 'edit_profile' %}">Edit Profile</a>
 
 </div>
 {% endblock content %}

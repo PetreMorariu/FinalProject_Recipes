@@ -1,0 +1,14 @@
+{% extends "recipes/base.html" %}
+{% load crispy_forms_tags %} <!-- will allow us to use the crispy filter on any forms -->
+{% block content%}
+       <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Profile Edit</legend>
+                {{ u_form|crispy }} <!-- using crispy filter for styling -->
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+       </form>
+{% endblock content %}

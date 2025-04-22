@@ -55,7 +55,7 @@ def edit_profile(request):
              messages.info(request,f'Your Account has been updated!')
          else:
              messages.warning(request, f'The account already exists!')
-         return redirect('profile')
+         return redirect('view_profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
     return render(request, 'accounts/edit_profile.html',{'u_form':u_form})
