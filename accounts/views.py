@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from .models import Profile
 
 from .forms import UserRegisterForm, UserUpdateForm
 
@@ -41,7 +42,12 @@ def logout_view(request):
         return render(request, 'accounts/logout.html')
 
 @login_required
-def profile(request):
+def view_profile(request):
+    form = Profile
+    return render(request, 'accounts/view_profile.html',{'form':form})
+
+@login_required
+def edit_profile(request):
     if request.method == 'POST':
          u_form = UserUpdateForm(request.POST, instance=request.user)
          if u_form.is_valid():
@@ -52,4 +58,4 @@ def profile(request):
          return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
-    return render(request, 'accounts/profile.html',{'u_form':u_form})
+    return render(request, 'accounts/edit_profile.html',{'u_form':u_form})

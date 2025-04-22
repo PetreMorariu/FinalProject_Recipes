@@ -1,0 +1,15 @@
+{% extends "recipes/base.html" %}
+{% load crispy_forms_tags %} <!-- will allow us to use the crispy filter on any forms -->
+{% block content%}
+  <div class="content-section">
+      <div class="media-body">
+          <legend class="border-bottom mb-4">Profile Info</legend>
+          <a class="mr-2" style="font-weight: bold">User:</a>
+          <p class="text-secondary">{{ user.username }}</p>
+          <a class="mr-2" style="font-weight: bold">E-mail:</a>
+          <p class="text-secondary">{{ user.email }}</p>
+      </div>
+      <button class="btn btn-outline-info" type="submit">Edit Profile</button>
+
+</div>
+{% endblock content %}
