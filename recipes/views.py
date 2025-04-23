@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 
 def home(request):
-    recipes = Recipe.objects.all().order_by('-date_created')
+    recipes = (Recipe.objects.all().order_by('-date_created'))
 
     for recipe in recipes:
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
