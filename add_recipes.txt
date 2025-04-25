@@ -1,0 +1,16 @@
+
+# Run Django shell (python manage.py shell) and then run the following commands...
+
+import json
+from recipes.models import Recipe
+
+with open('recipes.json') as f:
+   recipe_json = json.load(f)
+   
+for recipe in recipe_json:
+   recipe = Recipe(title=recipe['title'], ingredients=recipe['ingredients'], cooking_steps=recipe['cooking_steps'],date_created=recipe['date_created'], cook_time=recipe['cook_time'],prep_time=recipe['prep_time'], author_id=recipe['author'])
+   recipe.save()
+
+
+NOTE!!: you might need to change the value for key "author" depending on your users created on the database
+

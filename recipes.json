@@ -1,0 +1,236 @@
+[
+    {
+        "title": "Spaghetti Carbonara",
+        "ingredients": "200g spaghetti,\n100g pancetta,\n2 large eggs,\n50g parmesan cheese,\nblack pepper.",
+        "cooking_steps": "1. Boil the pasta.\n2. Fry the pancetta.\n3. Beat the eggs and mix with cheese.\n4. Combine everything and serve.",
+        "date_created": "2023-10-01T10:00:00",
+        "cook_time": 20,
+        "prep_time": 10,
+        "author": 1
+    },
+    {
+        "title": "Tomato Basil Pasta",
+        "ingredients": "250g pasta,\n400g canned tomatoes,\nfresh basil,\ngarlic,\nolive oil.",
+        "cooking_steps": "1. Cook the pasta.\n2. Sauté garlic, add tomatoes, and simmer.\n3. Mix with pasta and add basil.",
+        "date_created": "2023-10-02T11:00:00",
+        "cook_time": 25,
+        "prep_time": 5,
+        "author": 9
+    },
+    {
+        "title": "Chicken Curry",
+        "ingredients": "500g chicken,\n1 onion,\n2 tomatoes,\ncurry powder,\ncoconut milk.",
+        "cooking_steps": "1. Brown chicken.\n2. Sauté onion, add tomatoes and curry.\n3. Stir in coconut milk and simmer.",
+        "date_created": "2023-10-03T12:00:00",
+        "cook_time": 35,
+        "prep_time": 15,
+        "author": 10
+    },
+    {
+        "title": "Vegetable Stir Fry",
+        "ingredients": "200g mixed vegetables,\nsoy sauce,\nginger,\ngarlic,\nsesame oil.",
+        "cooking_steps": "1. Heat oil.\n2. Add garlic, ginger, and vegetables.\n3. Stir fry and add soy sauce.",
+        "date_created": "2023-10-04T13:00:00",
+        "cook_time": 15,
+        "prep_time": 5,
+        "author": 11
+    },
+    {
+        "title": "Grilled Cheese Sandwich",
+        "ingredients": "2 slices of bread,\n2 slices of cheese,\nbutter.",
+        "cooking_steps": "1. Butter the bread.\n2. Place cheese between slices.\n3. Grill until golden.",
+        "date_created": "2023-10-05T14:00:00",
+        "cook_time": 10,
+        "prep_time": 5,
+        "author": 1
+    },
+    {
+        "title": "Vegetable Soup",
+        "ingredients": "1 onion,\n2 carrots,\n3 celery sticks,\nvegetable broth,\nherbs.",
+        "cooking_steps": "1. Chop vegetables.\n2. Sauté onion, then add carrots and celery.\n3. Add broth and simmer.",
+        "date_created": "2023-10-06T15:00:00",
+        "cook_time": 30,
+        "prep_time": 10,
+        "author": 9
+    },
+    {
+        "title": "Beef Tacos",
+        "ingredients": "300g ground beef,\ntaco shells,\nlettuce,\ncheese,\nsalsa.",
+        "cooking_steps": "1. Cook beef with spices.\n2. Fill taco shells with beef and toppings.",
+        "date_created": "2023-10-07T16:00:00",
+        "cook_time": 20,
+        "prep_time": 5,
+        "author": 10
+    },
+    {
+        "title": "Chocolate Chip Cookies",
+        "ingredients": "100g butter,\n100g sugar,\n1 egg,\n200g flour,\n100g chocolate chips.",
+        "cooking_steps": "1. Cream butter and sugar.\n2. Add egg and flour, then mix in chocolate chips.\n3. Bake until golden.",
+        "date_created": "2023-10-08T17:00:00",
+        "cook_time": 15,
+        "prep_time": 10,
+        "author": 11
+    },
+    {
+        "title": "Pancakes",
+        "ingredients": "200g flour,\n2 eggs,\n300ml milk,\nsugar,\nbutter.",
+        "cooking_steps": "1. Mix all ingredients.\n2. Pour batter onto a hot pan.\n3. Flip when bubbles form.",
+        "date_created": "2023-10-09T18:00:00",
+        "cook_time": 10,
+        "prep_time": 5,
+        "author": 1
+    },
+    {
+        "title": "Caesar Salad",
+        "ingredients": "Romaine lettuce,\ncaesar dressing,\ncroutons,\nparmesan cheese.",
+        "cooking_steps": "1. Tear lettuce, mix in dressing, croutons, and cheese.\n2. Serve chilled.",
+        "date_created": "2023-10-10T19:00:00",
+        "cook_time": 0,
+        "prep_time": 10,
+        "author": 9
+    },
+    {
+        "title": "Shrimp Scampi",
+        "ingredients": "200g shrimp,\ngarlic,\nbutter,\nlemon,\nparsley,\npasta.",
+        "cooking_steps": "1. Sauté garlic in butter.\n2. Add shrimp and cook.\n3. Toss with pasta and parsley.",
+        "date_created": "2023-10-11T20:00:00",
+        "cook_time": 15,
+        "prep_time": 5,
+        "author": 10
+    },
+    {
+        "title": "Banana Bread",
+        "ingredients": "3 ripe bananas,\n100g sugar,\n200g flour,\n2 eggs,\nbaking powder.",
+        "cooking_steps": "1. Mash bananas.\n2. Mix all ingredients.\n3. Bake until a toothpick comes out clean.",
+        "date_created": "2023-10-12T21:00:00",
+        "cook_time": 60,
+        "prep_time": 10,
+        "author": 11
+    },
+    {
+        "title": "Omelette",
+        "ingredients": "3 eggs,\nbell pepper,\nonion,\ncheese,\nsalt.",
+        "cooking_steps": "1. Beat eggs.\n2. Sauté veggies.\n3. Pour in eggs and cook until set.",
+        "date_created": "2023-10-13T22:00:00",
+        "cook_time": 10,
+        "prep_time": 5,
+        "author": 1
+    },
+    {
+        "title": "Stuffed Peppers",
+        "ingredients": "4 bell peppers,\n200g ground beef,\nrice,\ntomato sauce.",
+        "cooking_steps": "1. Cook beef and rice.\n2. Stuff peppers with mixture.\n3. Bake until peppers are tender.",
+        "date_created": "2023-10-14T23:00:00",
+        "cook_time": 30,
+        "prep_time": 15,
+        "author": 9
+    },
+    {
+        "title": "Crispy Fried Chicken",
+        "ingredients": "500g chicken,\nflour,\nspices,\noil.",
+        "cooking_steps": "1. Coat chicken with seasoned flour.\n2. Fry in hot oil until golden.",
+        "date_created": "2023-10-15T10:00:00",
+        "cook_time": 30,
+        "prep_time": 15,
+        "author": 10
+    },
+    {
+        "title": "Lentil Soup",
+        "ingredients": "200g lentils,\n1 onion,\n2 carrots,\nvegetable broth.",
+        "cooking_steps": "1. Sauté onion and carrots.\n2. Add lentils and broth.\n3. Simmer until lentils are tender.",
+        "date_created": "2023-10-16T11:00:00",
+        "cook_time": 40,
+        "prep_time": 10,
+        "author": 11
+    },
+    {
+        "title": "Quiche Lorraine",
+        "ingredients": "Pie crust,\n4 eggs,\ncream,\nbacon,\ncheese.",
+        "cooking_steps": "1. Whisk eggs and cream.\n2. Add cooked bacon and cheese.\n3. Bake until set.",
+        "date_created": "2023-10-17T12:00:00",
+        "cook_time": 45,
+        "prep_time": 15,
+        "author": 1
+    },
+    {
+        "title": "Margarita Pizza",
+        "ingredients": "Pizza dough,\ntomato sauce,\nmozzarella cheese,\nbasil.",
+        "cooking_steps": "1. Roll out dough.\n2. Spread sauce and cheese.\n3. Bake until crust is golden.",
+        "date_created": "2023-10-18T13:00:00",
+        "cook_time": 20,
+        "prep_time": 10,
+        "author": 9
+    },
+    {
+        "title": "Chili Con Carne",
+        "ingredients": "500g ground beef,\nkidney beans,\ntomatoes,\nchili powder.",
+        "cooking_steps": "1. Cook the beef.\n2. Add beans and tomatoes.\n3. Simmer with chili powder.",
+        "date_created": "2023-10-19T14:00:00",
+        "cook_time": 40,
+        "prep_time": 10,
+        "author": 10
+    },
+    {
+        "title": "Pesto Pasta",
+        "ingredients": "250g pasta,\nbasil pesto,\nparmesan cheese.",
+        "cooking_steps": "1. Cook pasta.\n2. Toss with pesto and cheese before serving.",
+        "date_created": "2023-10-20T15:00:00",
+        "cook_time": 15,
+        "prep_time": 5,
+        "author": 11
+    },
+    {
+        "title": "Fruit Salad",
+        "ingredients": "Assorted fruits,\nhoney,\nlemon juice.",
+        "cooking_steps": "1. Chop fruits.\n2. Combine with honey and lemon juice.",
+        "date_created": "2023-10-21T16:00:00",
+        "cook_time": 0,
+        "prep_time": 10,
+        "author": 1
+    },
+    {
+        "title": "Baked Ziti",
+        "ingredients": "Pasta,\nmarinara sauce,\nmozzarella cheese,\nricotta cheese.",
+        "cooking_steps": "1. Cook pasta.\n2. Mix with sauce and cheeses.\n3. Bake until bubbly.",
+        "date_created": "2023-10-22T17:00:00",
+        "cook_time": 25,
+        "prep_time": 15,
+        "author": 9
+    },
+    {
+        "title": "Apple Pie",
+        "ingredients": "Pie crust,\napples,\nsugar,\ncinnamon.",
+        "cooking_steps": "1. Slice apples.\n2. Mix with sugar and cinnamon.\n3. Bake in pie crust until golden.",
+        "date_created": "2023-10-23T18:00:00",
+        "cook_time": 50,
+        "prep_time": 20,
+        "author": 10
+    },
+    {
+        "title": "Cucumber Salad",
+        "ingredients": "Cucumbers,\nvinegar,\nsugar,\ndill.",
+        "cooking_steps": "1. Slice cucumbers.\n2. Toss with vinegar, sugar, and dill.",
+        "date_created": "2023-10-24T19:00:00",
+        "cook_time": 0,
+        "prep_time": 10,
+        "author": 11
+    },
+    {
+        "title": "Tuna Salad",
+        "ingredients": "Canned tuna,\nmayonnaise,\ncelery,\nonion.",
+        "cooking_steps": "1. Mix all ingredients.\n2. Serve on bread or with crackers.",
+        "date_created": "2023-10-25T20:00:00",
+        "cook_time": 0,
+        "prep_time": 10,
+        "author": 1
+    },
+    {
+        "title": "Rice Pilaf",
+        "ingredients": "Rice,\nbroth,\nvegetables,\nspices.",
+        "cooking_steps": "1. Sauté vegetables.\n2. Add rice and broth.\n3. Cook until rice is tender.",
+        "date_created": "2023-10-26T21:00:00",
+        "cook_time": 25,
+        "prep_time": 5,
+        "author": 9
+    }
+]
