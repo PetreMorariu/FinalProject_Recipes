@@ -64,13 +64,13 @@ def test_format_total_cook_time(client_logged_in, user, recipe):
     assert recipe.cook_time == 34
 
 def test_detail_view(client_logged_in,user,recipes):
-    url = "/recipe/1/"
+    url = "/recipes/1/"
     response = client_logged_in.get(url)
     decoded = response.content.decode()
     assert response.status_code == 200
     assert "INGREDIENTS:" in decoded
 
-    url = "/recipe/2/"
+    url = "/recipes/2/"
     response = client_logged_in.get(url)
     decoded = response.content.decode()
     assert response.status_code == 200
@@ -78,7 +78,7 @@ def test_detail_view(client_logged_in,user,recipes):
 
 
 def test_add_recipe(client_logged_in, user, recipe, recipes):
-    url= "/recipe/add/"
+    url= "/recipes/add/"
     response = client_logged_in.get(url)
     decoded = response.content.decode()
     assert response.status_code == 200
@@ -100,7 +100,7 @@ def test_add_recipe(client_logged_in, user, recipe, recipes):
     assert "New Recipe" in response.content.decode()
 
 def test_edit_recipe(client_logged_in, user, recipe):
-    url = "/recipe/1/edit/"
+    url = "/recipes/1/edit/"
     response = client_logged_in.get(url)
     decoded = response.content.decode()
     assert response.status_code == 200
@@ -108,7 +108,7 @@ def test_edit_recipe(client_logged_in, user, recipe):
 
 
 def test_confirm_delete(client_logged_in,user,recipe):
-    url = "/recipe/1/delete/"
+    url = "/recipes/1/delete/"
     response = client_logged_in.get(url)
     decoded = response.content.decode()
     assert response.status_code == 200
@@ -116,8 +116,28 @@ def test_confirm_delete(client_logged_in,user,recipe):
 
     assert len(Recipe.objects.all()) == 1
 
-    response = client_logged_in.post("/recipe/1/delete/")
+    response = client_logged_in.post("/recipes/1/delete/")
     assert response.status_code == 302
     assert len(Recipe.objects.all()) == 0
 
+def test_sort_recipes_by_title(client_logged_in,user,recipes):
+    url = "/recipes/sort_title/"
+    response = client_logged_in.get(url)
+    decode = response.content.decode()
+    assert  response.status_code == 200
+    assert "milaneze" in decode
 
+
+def test_sort_recipes_by_date(client_logged_in,user,recipes):
+    url = "/recipes/sort_date/"
+    response = client_logged_in.get(url)
+    decode = response.content.decode()
+    assert  response.status_code == 200
+    assert "milaneze" in decode
+
+def test_view_recipes_user(client_logged_in,user,recipes):
+    url = "/recipes/user/"
+    response = client_logged_in.get(url)
+    decode = response.content.decode()
+    assert  response.status_code == 200
+    assert "Total Cook Time" in decode
