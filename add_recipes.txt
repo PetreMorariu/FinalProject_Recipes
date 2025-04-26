@@ -12,5 +12,5 @@ for recipe in recipe_json:
    recipe.save()
 
 
-NOTE!!: you might need to change the value for key "author" depending on your users created on the database
+NOTE!!: you might need to change the value for key "author" from the recipes.json file, depending on your users created on your database
 
