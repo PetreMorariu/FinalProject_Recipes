@@ -42,5 +42,24 @@ Make sure you have Python and pip installed on your machine.
 
 ### Populate the database with a few demo recipes
   If you want to have an initial set of recipes please follow the  steps from add_recipes.txt using recipes.json available in the project
+
+## The URL's available for the application
+###
+- **''** is the Recipes Home Page showing all the recipes paginated
+- **'recipes/<int:recipe_id>/'** will show a detail view for a specific recipe
+- **'recipes/add/'** will add a new recipe for the logged in user
+- **'recipes/<int:recipe_id>/edit/** will edit a recipe
+- **'recipes/<int:recipe_id>/delete/'** will delete a recipe
+- **'recipes/sort_title/'** will sort the recipes by title ascending
+- **'recipes/sort_date/'** will sort the recipes by date ascending
+- **'recipes/user/'** will show all te recipes for a certain user (it does not need to be the logged in user)
+- **'recipes/search/'** will open a page for a search based on the title
+###
+- **'login/'** user login page
+- **'logout/'** user logout page
+- **'register/'** user registration page
+- **'profile/'** user profile page
+- **'profile/edit/'** user edit profile page
+
   
 
