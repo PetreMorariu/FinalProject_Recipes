@@ -10,9 +10,9 @@ Welcome to Food Recipes, a web application build with Django for managing your f
 - **User Profiles**: Edit your profile
 - **View all recipes**: You can view all the recipes available from all the users even if you are not registered or logged in
 - **View recipes by users**: You can view all recipes created by a specific user just by clicking the user that created a certain recipe
-- **Pagination**: for a better navigation a pagination is available at your disposall
+- **Pagination**: for a better navigation a pagination is available at your disposal
 - **Main page show recipes**: main page will show the name of the recipe, total cook time, user and date created.
-- **Detail view of a recipe**: by cliking a recipe you will be able to see a detail view of a recipe and to edit or delete the recipe if you are the creator.
+- **Detail view of a recipe**: by clicking a recipe you will be able to see a detail view of a recipe and to edit or delete the recipe if you are the creator.
 
 ## Technologies used
 
