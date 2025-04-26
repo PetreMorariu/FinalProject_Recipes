@@ -43,7 +43,7 @@ Make sure you have Python and pip installed on your machine.
 ### Populate the database with a few demo recipes
   If you want to have an initial set of recipes please follow the  steps from add_recipes.txt using recipes.json available in the project
 
-## The URL's available for the application
+## URL's available for the application
 ###
 - **''** is the Recipes Home Page showing all the recipes paginated
 - **'recipes/<int:recipe_id>/'** will show a detail view for a specific recipe
