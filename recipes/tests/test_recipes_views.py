@@ -141,3 +141,10 @@ def test_view_recipes_user(client_logged_in,user,recipes):
     decode = response.content.decode()
     assert  response.status_code == 200
     assert "Total Cook Time" in decode
+
+def test_search(client_logged_in,user,recipes):
+    url = "/recipes/search/"
+    response = client_logged_in.get(url)
+    decode = response.content.decode()
+    assert  response.status_code == 200
+    assert "Results:" in decode
