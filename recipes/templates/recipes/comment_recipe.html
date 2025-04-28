@@ -1,0 +1,14 @@
+{% extends "recipes/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+        {% if user.is_authenticated %}
+            <h4>Add a Comment</h4>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-outline-info" type="submit">Add Comment</button>
+            </form>
+        {% endif %}
+
+{% endblock content %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe
-from .forms import RecipeForm, SearchForm
+from .forms import RecipeForm, SearchForm, CommentForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -36,7 +36,13 @@ def format_total_cook_time(duration):
 
 def detail_view_recipe_v2(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
-    return render(request, 'recipes/detail_recipe_v2.html', {'recipe': recipe})
+    comments = recipe.comments.all()
+
+    context = {
+        'recipe': recipe,
+        'comments': comments,
+    }
+    return render(request, 'recipes/detail_recipe_v2.html', context)
 
 
 @login_required
@@ -55,6 +61,22 @@ def add_recipe(request):
     else:
         form = RecipeForm()
         return render(request, 'recipes/add_recipe.html', {'form':form})
+
+@login_required
+def add_comment(request, recipe_id):
+    recipe = get_object_or_404(Recipe, id=recipe_id)
+    form = CommentForm()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.recipe = recipe
+            comment.user = request.user
+            comment.save()
+            return redirect('detail-recipes', recipe_id=recipe.id)
+    return render(request, 'recipes/comment_recipe.html',{'form':form,'recipe':recipe})
+
 
 
 
@@ -155,6 +177,9 @@ def search(request):
         recipe.total_time = total_time  # Attach to each recipe instance
 
     return render(request, 'recipes/search.html', {'form': form, 'results': results})
+
+
+
 
 
 

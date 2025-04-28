@@ -11,4 +11,5 @@ urlpatterns = [
     path('recipes/sort_date/', views.sort_recipe_by_date, name='sort-date'),
     path('recipes/user/', views.view_recipes_user, name='user-recipes'),
     path('recipes/search/', views.search, name='search-recipes'),
+    path('recipes/<int:recipe_id>/comment/', views.add_comment, name='comment-recipes'),
 ]
