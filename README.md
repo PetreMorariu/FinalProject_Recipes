@@ -13,7 +13,8 @@ Welcome to Food Recipes, a web application build with Django for managing your f
 - **Pagination**: for a better navigation a pagination is available at your disposal
 - **Main page show recipes**: main page will show the name of the recipe, total cook time, user and date created.
 - **Detail view of a recipe**: by clicking a recipe you will be able to see a detail view of a recipe and to edit or delete the recipe if you are the creator.
-
+- **Add a recipe comment** if you want to add a comment for a recipe you can do so as long as you are logged in
+ 
 ## Technologies used
 
 - Python 3.x
@@ -54,6 +55,7 @@ Make sure you have Python and pip installed on your machine.
 - **'recipes/sort_date/'** will sort the recipes by date ascending
 - **'recipes/user/'** will show all te recipes for a certain user (it does not need to be the logged in user)
 - **'recipes/search/'** will open a page for a search based on the title
+- **'recipes/<int:recipe_id>/comment/'** will open a page for adding a comment for a specific recipe
 ###
 - **'login/'** user login page
 - **'logout/'** user logout page
