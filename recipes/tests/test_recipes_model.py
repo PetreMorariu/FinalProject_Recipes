@@ -1,6 +1,8 @@
+from datetime import datetime
+
 import pytest
 from django.contrib.auth import get_user_model
-from recipes.models import Recipe
+from recipes.models import Recipe,Comment
 
 
 @pytest.mark.django_db
@@ -21,3 +23,28 @@ def test_create_recipe():
     assert recipe.prep_time == 45
     assert recipe.author == user
     assert recipe.image == "default.jpg"
+
+
+@pytest.mark.django_db
+def test_create_comment():
+    user = get_user_model().objects.create_user(username="user1", password="testing321")
+    recipe = Recipe.objects.create(title="Carbonara",
+                                   ingredients="paste,sos",
+                                   cooking_steps="sdfs",
+                                   cook_time=34,
+                                   prep_time=45,
+                                   author=user,
+                                   image="default.jpg")
+    # Create a datetime object for the date
+    data_created_comment = datetime(2025, 4, 30)
+
+    comment = Comment.objects.create(recipe=recipe,
+                                     user=user,
+                                     text="Delicious recipe. Do it!",
+                                     data_created_comment=data_created_comment
+                                     )
+
+    assert comment.text == "Delicious recipe. Do it!"
+    assert comment.recipe.title == "Carbonara"
+    assert comment.user.username == "user1"
+    assert comment.data_created_comment == data_created_comment
