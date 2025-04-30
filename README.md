@@ -7,7 +7,7 @@ Welcome to Food Recipes, a web application build with Django for managing your f
 - **Add immages**: Add an tasty immage along with your recipe if you want
 - **Search**: Quickly find recipes by title
 - **Order By**: Order recipes ascending by title and date 
-- **User Profiles**: Edit your profile
+- **User Profiles**: An User Porfile will be automatically created when a new user is registered. You have the ability to edit your profile
 - **View all recipes**: You can view all the recipes available from all the users even if you are not registered or logged in
 - **View recipes by users**: You can view all recipes created by a specific user just by clicking the user that created a certain recipe
 - **Pagination**: for a better navigation a pagination is available at your disposal
