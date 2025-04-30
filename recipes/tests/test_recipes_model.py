@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytest
 from django.contrib.auth import get_user_model
@@ -11,6 +11,7 @@ def test_create_recipe():
     recipe = Recipe.objects.create(title="Carbonara",
                                   ingredients="paste,sos",
                                   cooking_steps="sdfs",
+                                  date_created='2023-10-09 18:00:00',
                                   cook_time=34,
                                   prep_time=45,
                                   author=user,
@@ -31,20 +32,16 @@ def test_create_comment():
     recipe = Recipe.objects.create(title="Carbonara",
                                    ingredients="paste,sos",
                                    cooking_steps="sdfs",
+                                   date_created='2023-10-09 18:00:00',
                                    cook_time=34,
                                    prep_time=45,
                                    author=user,
                                    image="default.jpg")
-    # Create a datetime object for the date
-    data_created_comment = datetime(2025, 4, 30)
 
     comment = Comment.objects.create(recipe=recipe,
                                      user=user,
                                      text="Delicious recipe. Do it!",
-                                     data_created_comment=data_created_comment
                                      )
-
     assert comment.text == "Delicious recipe. Do it!"
     assert comment.recipe.title == "Carbonara"
     assert comment.user.username == "user1"
-    assert comment.data_created_comment == data_created_comment

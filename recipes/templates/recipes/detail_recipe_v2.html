@@ -17,7 +17,7 @@
               <p class="article-content">{{ recipe.cook_time }} min</p>
               <div class="article-metadata">
                 <a class="mr-2" href="{% url 'user-recipes' %}?author={{ recipe.author|urlencode }}" >{{ recipe.author }}</a>
-                <small class="text-muted">{{ recipe.date_created|date:"F d, Y" }}</small>
+                <small class="text-muted">{{ recipe.date_created }}</small>
               </div>
             </fieldset>
 
@@ -38,7 +38,7 @@
                     <div class="comment">
                         <p>{{ comment.text }}</p>
                         <a class="mr-2" >{{ comment.user.username }}</a>
-                        <small class="text-muted">{{ comment.data_created_comment|date:"F d, Y" }}</small>
+                        <small class="text-muted">{{ comment.data_created_comment }}</small>
                     </div>
                   </article>
                 {% empty %}

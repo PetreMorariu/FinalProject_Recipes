@@ -23,4 +23,4 @@ class Comment(models.Model):
     data_created_comment = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f'{self.user.username}'
+        return f'{self.text}'
