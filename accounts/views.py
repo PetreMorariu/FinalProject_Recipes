@@ -35,7 +35,7 @@ def login_view(request):
         form = AuthenticationForm()
         return render(request, 'accounts/login.html', {'form':form})
 
-@csrf_exempt
+# @csrf_exempt
 def logout_view(request):
       if request.method == 'POST':
         logout(request)
