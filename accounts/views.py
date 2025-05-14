@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.csrf import csrf_exempt
 from .models import Profile
 
 from .forms import UserRegisterForm, UserUpdateForm
@@ -35,7 +34,7 @@ def login_view(request):
         form = AuthenticationForm()
         return render(request, 'accounts/login.html', {'form':form})
 
-# @csrf_exempt
+
 def logout_view(request):
       if request.method == 'POST':
         logout(request)
