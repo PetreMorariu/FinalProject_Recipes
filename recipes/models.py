@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -15,6 +16,14 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.title
+
+    #This delete override will make sure to remove the image for the recipe stored as well
+    # at recipe detele time
+    def delete(self, *args, **kwargs):
+        image_path = self.image.path
+        if os.path.exists(image_path):
+            os.remove(image_path)
+        super().delete(*args, **kwargs)
 
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe, related_name='comments', on_delete=models.CASCADE)
