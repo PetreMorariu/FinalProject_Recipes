@@ -33,7 +33,7 @@ Make sure you have Python and pip installed on your machine.
 ### Follow the below steps
 
 - **Get the application from the Github repo**: https://github.com/PetreMorariu/FinalProject_Recipes
-- **Copy the app on a path to yout computer**: (eg: C:\django_recipes)
+- **Copy the app on a path to your computer**: (eg: C:\django_recipes)
 - **Go to that path**: cd C:\django_recipes from a CMD run as Administrator
 - **Create the virtual env**:  python -m venv venv
 - **Activate the venv**: venv\Scripts\activate, After activation, your command prompt should change to indicate that you are now working inside the virtual environment.
