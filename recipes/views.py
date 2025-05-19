@@ -13,7 +13,7 @@ def home(request):
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time  # Attach to each recipe instance
 
-    paginator = Paginator(recipes,7)
+    paginator = Paginator(recipes,4)
     page_number = request.GET.get('page')  # Get the page number from GET request
     page_obj = paginator.get_page(page_number)
 
@@ -119,7 +119,7 @@ def sort_recipe_by_title(request):
     recipes_list.sort(key=lambda recipe: recipe.title)
 
     # Pagination
-    paginator = Paginator(recipes_list, 7)
+    paginator = Paginator(recipes_list, 4)
     page_number = request.GET.get('page')
     recipes_page = paginator.get_page(page_number)
 
@@ -139,7 +139,7 @@ def sort_recipe_by_date(request):
     recipes_list.sort(key=lambda recipe: recipe.date_created)
 
     # Pagination
-    paginator = Paginator(recipes_list, 7)
+    paginator = Paginator(recipes_list, 4)
     page_number = request.GET.get('page')
     recipes_page = paginator.get_page(page_number)
 
