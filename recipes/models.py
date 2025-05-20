@@ -18,7 +18,7 @@ class Recipe(models.Model):
         return self.title
 
     #This delete override will make sure to remove the image for the recipe stored as well
-    # at recipe detele time
+    # at recipe delete time
     def delete(self, *args, **kwargs):
         image_path = self.image.path
         if os.path.exists(image_path):
