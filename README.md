@@ -5,7 +5,7 @@ Welcome to Food Recipes, a web application build with Django for managing your f
 - **User Authentication**: Secure user registration and login. Once a new user is created, a User Profile will be automatically created for that user.
 - **User Profiles**: A User Porfile will be automatically created when a new user is registered. You have the ability to edit your profile
 - **Recipe CRUD**: Create, Read, Update, and Delete recipes created by you.
-- **Add immages**: Add a tasty immage along with your recipe if you want
+- **Add images**: Add a tasty immage along with your recipe if you want
 - **Search**: Quickly find recipes by title
 - **Order By**: Order recipes ascending by title and date 
 - **View all recipes**: You can view all the recipes available from all the users even if you are not registered or logged in
