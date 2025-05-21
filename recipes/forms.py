@@ -6,6 +6,12 @@ class RecipeForm(forms.ModelForm):
         model = Recipe
         fields = ['title','image', 'ingredients', 'cooking_steps', 'date_created','prep_time','cook_time']
 
+        labels = {
+            'prep_time': 'Preparation Time (mins)',
+            'cook_time': 'Cooking Time (mins)',
+        }
+
+
 class SearchForm(forms.Form):
     query = forms.CharField(max_length=100, label='Search')
 
