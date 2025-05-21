@@ -13,15 +13,20 @@ def home(request):
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time  # Attach to each recipe instance
 
-    paginator = Paginator(recipes,4)
-    page_number = request.GET.get('page')  # Get the page number from GET request
-    page_obj = paginator.get_page(page_number)
-
+    recipes_page = pagination(request)
     context = {
-        'recipes': page_obj
+        'recipes': recipes_page
         }
 
     return render(request, 'recipes/home.html',context)
+
+#create a function that will make the pagination
+def pagination(request):
+    recipes = (Recipe.objects.all().order_by('-date_created'))
+    paginator = Paginator(recipes, 5)
+    page_number = request.GET.get('page')  # Get the page number from GET request
+    recipe_page = paginator.get_page(page_number)
+    return recipe_page
 
 # create function that will format the Total cooking time
 def format_total_cook_time(duration):
@@ -118,10 +123,7 @@ def sort_recipe_by_title(request):
         recipes_list.append(recipe)
     recipes_list.sort(key=lambda recipe: recipe.title)
 
-    # Pagination
-    paginator = Paginator(recipes_list, 4)
-    page_number = request.GET.get('page')
-    recipes_page = paginator.get_page(page_number)
+    recipes_page = pagination(request)
 
     return render(request, 'recipes/sort_title.html', {'recipes': recipes_page})
 
@@ -137,11 +139,7 @@ def sort_recipe_by_date(request):
     for recipe in recipes:
         recipes_list.append(recipe)
     recipes_list.sort(key=lambda recipe: recipe.date_created)
-
-    # Pagination
-    paginator = Paginator(recipes_list, 4)
-    page_number = request.GET.get('page')
-    recipes_page = paginator.get_page(page_number)
+    recipes_page = pagination(request)
 
     return render(request, 'recipes/sort_date_created.html', {'recipes': recipes_page})
 
