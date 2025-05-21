@@ -6,19 +6,32 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
 
+# def home(request):
+#     recipes = (Recipe.objects.all().order_by('-date_created'))
+#     recipes_page = pagination(request)
+#
+#     for recipe in recipes:
+#         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
+#         recipe.total_time = total_time  # Attach to each recipe instance
+#
+#     context = {
+#         'recipes': recipes_page
+#         }
+#
+#     return render(request, 'recipes/home.html',context)
+
 def home(request):
-    recipes = (Recipe.objects.all().order_by('-date_created'))
-
-    for recipe in recipes:
-        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
-        recipe.total_time = total_time  # Attach to each recipe instance
-
     recipes_page = pagination(request)
+
+    # Attach total_time to each recipe in the paginated page
+    for recipe in recipes_page:
+        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
+        recipe.total_time = total_time
+
     context = {
         'recipes': recipes_page
-        }
-
-    return render(request, 'recipes/home.html',context)
+    }
+    return render(request, 'recipes/home.html', context)
 
 #create a function that will make the pagination
 def pagination(request):
@@ -112,18 +125,17 @@ def delete_recipe(request, recipe_id):
 
 
 def sort_recipe_by_title(request):
-    recipes = Recipe.objects.all()
+    # recipes = Recipe.objects.all()
     #add the total_time to each recipe
-    for recipe in recipes:
+    recipes_page = pagination(request)
+    for recipe in recipes_page:
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time  # Attach to each recipe instance
 
     recipes_list = []
-    for recipe in recipes:
+    for recipe in recipes_page:
         recipes_list.append(recipe)
     recipes_list.sort(key=lambda recipe: recipe.title)
-
-    recipes_page = pagination(request)
 
     return render(request, 'recipes/sort_title.html', {'recipes': recipes_page})
 
