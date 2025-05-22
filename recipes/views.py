@@ -6,20 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
 
-# def home(request):
-#     recipes = (Recipe.objects.all().order_by('-date_created'))
-#     recipes_page = pagination(request)
-#
-#     for recipe in recipes:
-#         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
-#         recipe.total_time = total_time  # Attach to each recipe instance
-#
-#     context = {
-#         'recipes': recipes_page
-#         }
-#
-#     return render(request, 'recipes/home.html',context)
-
 def home(request):
     recipes_page = pagination(request)
 
