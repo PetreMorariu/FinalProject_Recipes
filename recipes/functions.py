@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 
 #create pagination function
 def pagination(request, recipes):
-    paginator = Paginator(recipes, 5)
+    paginator = Paginator(recipes, 7)
     page_number = request.GET.get('page')
     recipe_page = paginator.get_page(page_number)
 

@@ -37,7 +37,7 @@ Make sure you have Python and pip installed on your machine.
 - **Go to that path**: cd C:\django_recipes from a CMD run as Administrator
 - **Create the virtual env**:  python -m venv venv
 - **Activate the venv**: venv\Scripts\activate, After activation, your command prompt should change to indicate that you are now working inside the virtual environment.
-- **Install Project Dependencies**: pip install -r packages.txt
+- **Install Project Dependencies**: pip install -r Requirements.txt
 - **Run database migrations**:python manage.py migrate
 - **Start the Django development server**:python manage.py runserver
 
