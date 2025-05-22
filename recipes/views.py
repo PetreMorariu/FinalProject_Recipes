@@ -3,39 +3,13 @@ from .models import Recipe
 from .forms import RecipeForm, SearchForm, CommentForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
+from .functions import pagination,format_total_cook_time
 
 
 def home(request):
     recipes = Recipe.objects.all().order_by('-date_created')
     context = pagination(request, recipes)
     return render(request, 'recipes/home.html', context)
-
-#create pagination function
-def pagination(request, recipes):
-    paginator = Paginator(recipes, 5)
-    page_number = request.GET.get('page')
-    recipe_page = paginator.get_page(page_number)
-
-    # Attach total_time to each recipe in the paginated page
-    for recipe in recipe_page:
-        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
-        recipe.total_time = total_time
-
-    return {
-        'recipes': recipe_page,
-    }
-
-# create function that will format the Total cooking time
-def format_total_cook_time(duration):
-    hours = duration // 60
-    minutes = duration % 60
-    minute_descriptor  = "minute" if minutes == 1 else "minutes"
-    hour_descriptor  = "hour" if hours == 1 else "hours"
-
-    return "{hours} {hour_descriptor} {minutes} {minute_descriptor}".format(hours=hours, minutes=minutes,
-                                                                            minute_descriptor=minute_descriptor,
-                                                                            hour_descriptor=hour_descriptor)
 
 def detail_view_recipe_v2(request, recipe_id):
     recipe = get_object_or_404(Recipe, id=recipe_id)
