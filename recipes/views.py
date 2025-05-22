@@ -7,25 +7,24 @@ from django.core.paginator import Paginator
 
 
 def home(request):
-    recipes_page = pagination(request)
+    recipes = Recipe.objects.all().order_by('-date_created')
+    context = pagination(request, recipes)
+    return render(request, 'recipes/home.html', context)
+
+#create pagination function
+def pagination(request, recipes):
+    paginator = Paginator(recipes, 5)
+    page_number = request.GET.get('page')
+    recipe_page = paginator.get_page(page_number)
 
     # Attach total_time to each recipe in the paginated page
-    for recipe in recipes_page:
+    for recipe in recipe_page:
         total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
         recipe.total_time = total_time
 
-    context = {
-        'recipes': recipes_page
+    return {
+        'recipes': recipe_page,
     }
-    return render(request, 'recipes/home.html', context)
-
-#create a function that will make the pagination
-def pagination(request):
-    recipes = (Recipe.objects.all().order_by('-date_created'))
-    paginator = Paginator(recipes, 5)
-    page_number = request.GET.get('page')  # Get the page number from GET request
-    recipe_page = paginator.get_page(page_number)
-    return recipe_page
 
 # create function that will format the Total cooking time
 def format_total_cook_time(duration):
@@ -109,38 +108,16 @@ def delete_recipe(request, recipe_id):
     return render(request, 'recipes/confirm_delete.html', {'recipe': recipe})
 
 
-
 def sort_recipe_by_title(request):
-    # recipes = Recipe.objects.all()
-    #add the total_time to each recipe
-    recipes_page = pagination(request)
-    for recipe in recipes_page:
-        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
-        recipe.total_time = total_time  # Attach to each recipe instance
-
-    recipes_list = []
-    for recipe in recipes_page:
-        recipes_list.append(recipe)
-    recipes_list.sort(key=lambda recipe: recipe.title)
-
-    return render(request, 'recipes/sort_title.html', {'recipes': recipes_page})
+    recipes = Recipe.objects.all().order_by('title')
+    context = pagination(request, recipes)
+    return render(request, 'recipes/sort_title.html', context)
 
 
 def sort_recipe_by_date(request):
-    recipes = Recipe.objects.all()
-    # add the total_time to each recipe
-    for recipe in recipes:
-        total_time = format_total_cook_time(recipe.prep_time + recipe.cook_time)
-        recipe.total_time = total_time  # Attach to each recipe instance
-
-    recipes_list = []
-    for recipe in recipes:
-        recipes_list.append(recipe)
-    recipes_list.sort(key=lambda recipe: recipe.date_created)
-    recipes_page = pagination(request)
-
-    return render(request, 'recipes/sort_date_created.html', {'recipes': recipes_page})
-
+    recipes = Recipe.objects.all().order_by('date_created')
+    context = pagination(request, recipes)
+    return render(request, 'recipes/sort_date_created.html', context)
 
 def view_recipes_user(request):
     author = request.GET.get('author')
