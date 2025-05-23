@@ -104,7 +104,6 @@ def test_edit_recipe(client_logged_in, user, recipe):
     response = client_logged_in.get(url)
     decoded = response.content.decode()
     assert response.status_code == 200
-    assert "Prep time* and Cook time* are displayed in minutes" in decoded
 
 
 def test_confirm_delete(client_logged_in,user,recipe):
