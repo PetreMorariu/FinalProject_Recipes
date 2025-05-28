@@ -12,7 +12,6 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data.get('username')
             #the below message will be a flashed message, one time-alert
             messages.success(request, f'Your account has been created. You are now able to Log In')
             return redirect('login')
