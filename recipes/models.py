@@ -14,7 +14,7 @@ class Recipe(models.Model):
     prep_time = models.IntegerField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)  #create a one-many connection;If User will be deleted, then his recipes will be deleted as well
     #add an immage for a recipe
-    image = models.ImageField(default='default.jpg',upload_to='recipe_images')
+    image = models.ImageField(default='default.jpg', upload_to='recipe_images')
 
     def __str__(self):
         return self.title
@@ -27,14 +27,14 @@ class Recipe(models.Model):
             os.remove(image_path)
         super().delete(*args, **kwargs)
 
-    def save(self):
-        super().save()
-
-        img = Image.open(self.image.path)
-        if img.height > 300 or img.width > 300:
-            output_size = (300, 300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+    # def save(self, *args, **kwarg):
+    #     super().save(*args, **kwarg)
+    #
+    #     img = Image.open(self.image.path)
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300, 300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.image.path)
 
 class Comment(models.Model):
     recipe = models.ForeignKey(Recipe, related_name='comments', on_delete=models.CASCADE)
